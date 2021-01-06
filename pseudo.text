@@ -1,0 +1,17 @@
+Create a start button
+The event of clicking button =>
+    Timer starts
+    Multipule choice question renders
+    Answer buttons renders
+        Correct choice
+            Increase score variable
+        Incorrect choice
+            Decrease score variable
+            Subtract from Timer
+    if no more questions || timer reaches 0
+        Game Over    
+    else repeat
+    Game over 
+        user enters initials && Saves High Score Locally
+If possible link to all high scores and display top 5 on home page
+        
