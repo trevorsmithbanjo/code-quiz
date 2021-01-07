@@ -23,7 +23,8 @@ var questions = [
 // Start quiz
 startQuiz.on("click", function () {
     startQuiz.hide();
-    quizTitle.hide();
+    // quizTitle.hide();
+    quizRounds();
 })
 
 // Function to set timer
@@ -38,23 +39,19 @@ function setTimer() {
     }, 1000)
 }
 
-// Quiz questions function
-function quizQuestions() {
+// Quiz Rounds function
+function quizRounds() {
     for (i = 0; i < questions.length; i++) {
         var question = questions[i];
-        var questionH2 = document.createElement("h2");
-        questionH2.textContent = question.q;
-        quizArea.appendChild(questionH2);
+        quizTitle.text(question.q);
 
         for (j = 0; j < question.a.length; j++) {
             var answer = question.a[j];
-            var answerDiv = document.createElement("div");
-            var answersBtn = document.createElement("button");
-            answersBtn.textContent = answer;
-            answersBtn.classList.add("btn", "btn-info");
-            answerDiv.append(answersBtn);
-            quizArea.append(answerDiv);
-            console.log(answer);
+            var answerBtn = $(`<div><button class="btn btn-info p-2 mb-2" id="answerBtn" value="${answer}">${answer}</button></div>`)
+            quizArea.append(answerBtn);
         }
     }
+    quizArea.on("click", function () {
+        console.log(answerBtn.value);
+    })
 }
