@@ -5,9 +5,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+    <!-- Added link to the jQuery Library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
     <!-- Bootstrap link -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+
     <title>Code Quiz</title>
 </head>
 
@@ -19,7 +23,7 @@
                 <a href="#" id="high-score">High Scores</a>
             </div>
             <div class="col-6 float-end">
-                <p class="text-end" id="timer"></p>
+                <p class="text-end" id="timer">Timer: 60</p>
             </div>
         </div>
     </div>
@@ -27,7 +31,11 @@
     <!-- Quiz area -->
     <div class="container mt-5">
         <div class="row">
-            <div class="col-10 text-center" id="quiz-area"></div>
+            <div class="text-center" id="quiz-area">
+                <h1 id="quiz-title">Code Quiz Challenge</h1>
+                <h3 id="quiz-question"></h3>
+                <button class="btn btn-info" id="start-quiz">Start Quiz</button>
+            </div>
         </div>
     </div>
 
