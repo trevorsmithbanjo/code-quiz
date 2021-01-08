@@ -49,33 +49,33 @@ $(document).ready(function () {
     // Quiz Rounds function
     function quizRounds() {
         var quizQuestion = $("<h1>");
-        for (i = 0; i < questions.length; i++) {
-            var question = questions[i];
+        var questionCount = 0;
+
+        // New Question function
+        function newQuestion() {
+            // Appends question to quizArea
+            var question = questions[questionCount];
             quizQuestion.text(question.q);
             quizArea.append(quizQuestion);
 
-            for (j = 0; j < question.a.length; j++) {
-                var answer = question.a[j];
+            // Appends answer buttons to quizArea
+            for (i = 0; i < question.a.length; i++) {
+                var answer = question.a[i];
                 var answerBtn = $(`<div><button class="btn btn-info p-2 mb-2" id="answerBtn" value="${answer}">${answer}</button></div>`)
                 quizArea.append(answerBtn);
             }
+            questionCount++;
+            console.log(questionCount);
         }
+        newQuestion();
+
         quizArea.on("click", function (event) {
             event.preventDefault();
             var btnClick = event.target.value;
-            console.log(question.c);
-            console.log(btnClick);
+            console.log(typeof btnClick);
+            console.log("event target value: " + btnClick);
 
-            // Test answer function
-            function testAnswer() {
-                if (btnClick === question.c) {
-                    userScore++;
-                } else if (btnClick !== question.c) {
-                    count - 20;
-                } else {
-                    return;
-                }
-            }
+
         })
     }
 
