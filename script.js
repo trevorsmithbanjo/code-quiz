@@ -19,6 +19,11 @@ $(document).ready(function () {
             a: ["A", "B", "C", "D"],
             c: "C"
         },
+        {
+            q: "This is another question",
+            a: ["A", "B", "C", "D"],
+            c: "A"
+        },
     ];
 
     // Start quiz event
@@ -58,12 +63,20 @@ $(document).ready(function () {
         quizArea.on("click", function (event) {
             event.preventDefault();
             var btnClick = event.target.value;
+            console.log(question.c);
+            console.log(btnClick);
+
+            // Test answer function
+            function testAnswer() {
+                if (btnClick === question.c) {
+                    userScore++;
+                } else if (btnClick !== question.c) {
+                    count - 20;
+                } else {
+                    return;
+                }
+            }
         })
     }
 
-    // Test answer function
-    function testAnswer() {
-        if (btnClick === question.c) { }
-    }
 })
-
