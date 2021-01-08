@@ -4,7 +4,7 @@ $(document).ready(function () {
     var highScore = $("#high-score");
     var timer = $("#timer");
     var quizArea = $("#quiz-area");
-    var quizTitle = $("#quiz-title");
+    var quizQuestion = $("#quiz-question");
     var startQuiz = $("#start-quiz");
 
     // Variables to change state
@@ -26,23 +26,18 @@ $(document).ready(function () {
             c: "A"
         },
     ];
+    var question = questions[questionCount];
 
     // Start quiz event
-    // startQuiz.on("click", function (event) {
-    //     event.preventDefault();
-    //     setTimer();
-    //     quizArea.empty();
-    //     newQuestion();
-    // })
-
     quizArea.on("click", function (event) {
         event.preventDefault();
-        var btnClick = event.target.value;
-
         if (questionCount === 0) {
             setTimer();
+        }
+        if (questionCount < questions.length) {
             quizArea.empty();
             newQuestion();
+            console.log(event);
         }
     })
 
@@ -68,21 +63,20 @@ $(document).ready(function () {
 
     // New Question function
     function newQuestion() {
-        var quizQuestion = $("<h1>");
+        // var quizQuestion = $("<h1>");
 
         // Appends question to quizArea
-        var question = questions[questionCount];
         quizQuestion.text(question.q);
         quizArea.append(quizQuestion);
 
         // Appends answer buttons to quizArea
         for (i = 0; i < question.a.length; i++) {
             var answer = question.a[i];
-            var answerBtn = $(`<div><button class="btn btn-info p-2 mb-2" id="answerBtn" value="${answer}">${answer}</button></div>`)
+            var answerBtn = $(`<div><button class="btn btn-info p-2 mb-2" id="answerBtn">${answer}</button></div>`)
             quizArea.append(answerBtn);
         }
         questionCount++;
-        console.log(questionCount);
+        console.log("question count: " + questionCount);
     }
 
 })
