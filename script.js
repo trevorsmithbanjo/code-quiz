@@ -10,6 +10,7 @@ $(document).ready(function () {
     // Variables to change state
     var userScore = 0;
     var count = 60;
+    var questionCount = 0;
     timer.textContent = "Timer: " + count;
 
     // object to hold questions
@@ -27,11 +28,22 @@ $(document).ready(function () {
     ];
 
     // Start quiz event
-    startQuiz.on("click", function (event) {
+    // startQuiz.on("click", function (event) {
+    //     event.preventDefault();
+    //     setTimer();
+    //     quizArea.empty();
+    //     newQuestion();
+    // })
+
+    quizArea.on("click", function (event) {
         event.preventDefault();
-        setTimer();
-        quizArea.empty();
-        quizRounds();
+        var btnClick = event.target.value;
+
+        if (questionCount === 0) {
+            setTimer();
+            quizArea.empty();
+            newQuestion();
+        }
     })
 
     // Function to set timer
@@ -46,43 +58,31 @@ $(document).ready(function () {
         }, 1000)
     }
 
-    // Quiz Rounds function
-    function quizRounds() {
-        var quizQuestion = $("<h1>");
-        var questionCount = 0;
 
-        // New Question function
-        function newQuestion() {
-            // Appends question to quizArea
-            var question = questions[questionCount];
-            quizQuestion.text(question.q);
-            quizArea.append(quizQuestion);
-
-            // Appends answer buttons to quizArea
-            for (i = 0; i < question.a.length; i++) {
-                var answer = question.a[i];
-                var answerBtn = $(`<div><button class="btn btn-info p-2 mb-2" id="answerBtn" value="${answer}">${answer}</button></div>`)
-                quizArea.append(answerBtn);
-            }
-            questionCount++;
-            console.log(questionCount);
+    // Test answer function
+    function testAnswer() {
+        if (btnClick === questions.c) {
+            console.log("btn: " + btnClick + "question.c: " + question.c);
         }
-        newQuestion();
+    }
 
-        quizArea.on("click", function (event) {
-            event.preventDefault();
-            var btnClick = event.target.value;
-            testAnswer();
-            // console.log(typeof btnClick);
-            // console.log("event target value: " + btnClick);
+    // New Question function
+    function newQuestion() {
+        var quizQuestion = $("<h1>");
 
-            // Test answer function
-            function testAnswer() {
-                if (btnClick === question.c) {
-                    console.log("btn: " + btnClick + "question.c: " + question.c);
-                }
-            }
-        })
+        // Appends question to quizArea
+        var question = questions[questionCount];
+        quizQuestion.text(question.q);
+        quizArea.append(quizQuestion);
+
+        // Appends answer buttons to quizArea
+        for (i = 0; i < question.a.length; i++) {
+            var answer = question.a[i];
+            var answerBtn = $(`<div><button class="btn btn-info p-2 mb-2" id="answerBtn" value="${answer}">${answer}</button></div>`)
+            quizArea.append(answerBtn);
+        }
+        questionCount++;
+        console.log(questionCount);
     }
 
 })
