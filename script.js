@@ -72,10 +72,16 @@ $(document).ready(function () {
         quizArea.on("click", function (event) {
             event.preventDefault();
             var btnClick = event.target.value;
-            console.log(typeof btnClick);
-            console.log("event target value: " + btnClick);
+            testAnswer();
+            // console.log(typeof btnClick);
+            // console.log("event target value: " + btnClick);
 
-
+            // Test answer function
+            function testAnswer() {
+                if (btnClick === question.c) {
+                    console.log("btn: " + btnClick + "question.c: " + question.c);
+                }
+            }
         })
     }
 
