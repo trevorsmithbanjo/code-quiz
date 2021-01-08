@@ -24,6 +24,7 @@ $(document).ready(function () {
     // Start quiz event
     startQuiz.on("click", function (event) {
         event.preventDefault();
+        setTimer();
         quizArea.empty();
         quizRounds();
     })
@@ -32,7 +33,7 @@ $(document).ready(function () {
     function setTimer() {
         var timerInterval = setInterval(function () {
             count--;
-            timer.textContent = "Timer: " + count;
+            timer.text("Timer: " + count);
 
             if (count == 0) {
                 clearInterval(timerInterval);
@@ -50,17 +51,19 @@ $(document).ready(function () {
 
             for (j = 0; j < question.a.length; j++) {
                 var answer = question.a[j];
-                var answerBtnInit = $(`<div><button class="btn btn-info p-2 mb-2" id="answerBtn" value="${answer}">${answer}</button></div>`)
-                quizArea.append(answerBtnInit);
+                var answerBtn = $(`<div><button class="btn btn-info p-2 mb-2" id="answerBtn" value="${answer}">${answer}</button></div>`)
+                quizArea.append(answerBtn);
             }
         }
         quizArea.on("click", function (event) {
-            console.log(event.target.value);
+            event.preventDefault();
+            var btnClick = event.target.value;
         })
     }
+
     // Test answer function
     function testAnswer() {
-
+        if (btnClick === question.c) { }
     }
 })
 
