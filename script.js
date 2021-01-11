@@ -37,7 +37,7 @@ $(document).ready(function () {
         if (questionCount < questions.length) {
             quizArea.empty();
             newQuestion();
-            console.log(event);
+            console.log(event.target.value);
         }
     })
 
