@@ -37,7 +37,7 @@ $(document).ready(function () {
         if (questionCount < questions.length) {
             quizArea.empty();
             newQuestion();
-            console.log(event.target.value);
+            console.log("event target value: " + event.target.value);
         }
     })
 
@@ -66,7 +66,7 @@ $(document).ready(function () {
         // var quizQuestion = $("<h1>");
 
         // Appends question to quizArea
-        quizQuestion.text(question.q);
+        quizQuestion.text(questions[questionCount].q);
         quizArea.append(quizQuestion);
 
         // Appends answer buttons to quizArea
