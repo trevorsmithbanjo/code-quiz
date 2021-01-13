@@ -153,6 +153,7 @@ $(document).ready(function () {
 
     // Function to display high scores
     function displayScores() {
+        quizArea.empty();
         quizArea.append(`<div><h3>High Score</h3></div>
                         <table class="table table-striped">
                         <thead>
