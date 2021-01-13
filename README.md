@@ -9,3 +9,4 @@ The purpose of this game is to sharpen the users knowledge of Javascript with a 
 <img src="./Assets/code_quiz_screen_shot.png" alt="Screen shot of app" width=500>
 
 ## Deployed Link
+https://trevorsmithbanjo.github.io/code-quiz/
