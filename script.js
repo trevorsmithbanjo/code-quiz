@@ -12,6 +12,7 @@ $(document).ready(function () {
     var count = 60;
     var questionCount = 0;
     timer.textContent = "Timer: " + count;
+    var userName = "";
 
     // object to hold questions
     var questions = [
@@ -70,7 +71,7 @@ $(document).ready(function () {
             console.log("btn: " + val + " question.c: " + questions[questionCount].c);
             console.log("incorrect");
             questionCount++;
-            count - 10;
+            count -= 10;
             newQuestion();
         }
     }
@@ -97,11 +98,30 @@ $(document).ready(function () {
             console.log("question count: " + questionCount);
         }
         else {
-            quizArea.empty();
-            quizArea.append(`<h1>Game Over</h1>`);
+            gameOver();
         }
     }
 
+    function gameOver() {
+        count = 1;
+        quizArea.empty();
+        quizArea.append(`<div><h1>Game Over</h1></div>
+                            <div><h3>Quiz Score: ${userScore}</h3><div>
+                            <div><label>Enter Name</lable><br>
+                            <input id="user-name">
+                            <button class="btn btn-info" id="name-btn">Save Score</button>
+                            </div>`);
+        $("#name-btn").on("click", function (event) {
+            event.preventDefault();
+            var userName = $("#user-name").val().trim();
+            localStorage.setItem("name", userName);
+            localStorage.setItem("score", userScore);
+        })
+    }
 
+    var savedScores = localStorage.getItem("name");
+    var savedNames = localStorage.getItem("score");
+    console.log(savedScores);
+    console.log(savedNames);
 
 })
